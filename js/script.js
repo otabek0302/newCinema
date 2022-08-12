@@ -1,9 +1,12 @@
 let URL = 'http://localhost:3001/'
+let data 
+
 
 function update() {
      axios.get(URL + 'movies')
          .then(res => {
              reload(res.data)
+             data = res.data
             //  console.log(res.data);
           })
      .catch(err => console.log(err))
@@ -24,20 +27,9 @@ let promo__bg = document.querySelector('.promo__bg'),
 //Serach
 let inpSearch = document.querySelector('#search')
 inpSearch.onkeyup = () => {
-    axios.get(URL + 'movies')
-        .then(res => {
-            let arr = res.data;
-            let filtered = arr.map((item) => {
-                let key = item.Title.toLowerCase();
-                let value = inpSearch.value.toLowerCase().trim()
-                if (key.includes(value)) {
-                    return item;
-                }
-            })
-            // reload(filtered)
-            console.log(filtered);
-        })
-     .catch(err => console.log(err))
+    let filtered = data.filter((item , index) => item.Title.toLowerCase().includes(inpSearch.value.toLowerCase().trim()))
+
+    reload(filtered)
 }
 
 

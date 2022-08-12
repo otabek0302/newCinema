@@ -8,7 +8,7 @@
      <title>Post </title>
 </head>
 <body>
-     <main class="post_main"> 
+     <div class="post_main"> 
           <div class="container">
                <div class="row post_content">
                     <div class="post_header">
@@ -60,62 +60,35 @@
                     </div>
                </div>
           </div>
-     </main>
+     </div>
           
           
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-     let  post_main = document.querySelector('.post_main'),
-          post_title  = document.querySelector('.post_title'),
-          post_desc = document.querySelector('.post_desc');
 
-     let url = 'http://localhost:3001/';
-     let splited = window.location.href.split('=');
-     splited = +splited.at(-1)
-
-     function update() {
-          axios.get(url + 'movies?id=' + splited)
-               .then(res => {
-                    posted(res.data)
-                    console.log(res.data);
-               })
-          .catch(err => console.log(err))
-     }
-     update()
-     function posted(obj) {
-          for (let item of obj) {
-               post_main.style.background = `url(${item.Poster}) center center/cover no-repeat;`
-               post_title.innerHTML = item.Title;
-               post_desc.innerHTML = item.Plot
-          }
-     } 
-
-     /////////////////////////////
-     let ul = document.querySelector('.post_slider_list')
-     axios.get(url + 'movies')
-          .then(res => {
-                    reSlide(res.data)
-                    console.log(res.data);
-               })
-          .catch(err => console.log(err))
+     let post_title = document.querySelector('.post_title')
+     let post_main = document.querySelector('.post_main')
      
-          function reSlide(arr) {
-          ul.innerHTML = "";
-          for (const item of arr) {
-          let  li = document.createElement('li'),
-               img = document.createElement('img');
-          
-               li.classList.add('post_slider_item');
-               img.setAttribute('src', `${item.imgSlide}`)
-               li.append(img)
 
-               li.onclick = (e) => {
-                    console.log(item);
-                    posted(item)
+     let URL = 'http://localhost:3001/'
+     let splited = window.location.href.split('=')
+     splited = splited.at(-1)
+
+     axios.get(URL + 'movies?id=' + splited)
+          .then(res => {
+               if(res.status === 200 || res.status === 201) {
+                    showMovie(res.data[0])
                }
-               ul.append(li)
-               }
-          }
+          })
+
+
+     function showMovie(data) {
+          console.log(`url('./img/${data.img}')`);
+          post_main.style.background = `url('./img/${data.img}')`
+          post_title.innerHTML = data.Title
+     }
+
+
 </script>
 </body>
 </html>

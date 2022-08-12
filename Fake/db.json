@@ -30,7 +30,7 @@
                    }
               ],
               "imgSlide": "./img/post_img/slide2.png",
-              "img": "./img/bg-gorila.jpg",
+              "img": "bg-gorila.jpg",
               "Metascore": "76",
               "imdbRating": "8.0",
               "imdbVotes": "1,045,658",
@@ -72,7 +72,7 @@
                    }
               ],
               "imgSlide": "./img/post_img/slide1.png",
-              "img": "../img/bg-batman.jpg",
+              "img": "bg-batman.jpg",
               "Metascore": "67",
               "imdbRating": "7.6",
               "imdbVotes": "573,212",
@@ -113,8 +113,8 @@
                         "Value": "69/100"
                    }
               ],
-              "img": "../img/bg-avengers.jpeg",
               "imgSlide": "./img/post_img/slide8.jpg",
+              "img": "bg-avengers.jpeg",
               "Metascore": "69",
               "imdbRating": "8.0",
               "imdbVotes": "1,263,208",
@@ -156,7 +156,7 @@
                    }
               ],
               "imgSlide": "./img/post_img/slide6.png",
-              "img":"../img/bg-avengers-ultron.jpeg",
+              "img":"bg-avengers-ultron.jpeg",
               "Metascore": "66",
               "imdbRating": "7.3",
               "imdbVotes": "748,735",
@@ -198,7 +198,7 @@
                    }
               ],
               "imgSlide": "./img/post_img/slide3.png",
-              "img": "../img/bg-uncharted.jpeg",
+              "img": "bg-uncharted.webp",
               "Metascore": "68",
               "imdbRating": "8.4",
               "imdbVotes": "839,788",
@@ -240,7 +240,7 @@
                    }
               ],
               "imgSlide": "./img/post_img/slide5.png",
-              "img": "../img/bg-turning.jpeg",
+              "img": "bg-turning.jpeg",
               "Metascore": "78",
               "imdbRating": "8.4",
               "imdbVotes": "816,700",
@@ -282,7 +282,7 @@
                    }
               ],
               "imgSlide": "./img/post_img/slide4.jpeg",
-              "img": "../img/bg-doctor-s.jpeg",
+              "img": "bg-doctor-s.jpeg",
               "Metascore": "72",
               "imdbRating": "7.5",
               "imdbVotes": "600,090",
@@ -324,7 +324,7 @@
                    }
               ],
               "imgSlide": "./img/post_img/slide7.jpg",
-              "img": "../img/bg-spiderman.jpeg",
+              "img": "bg-spiderman.jpeg",
               "Metascore": "73",
               "imdbRating": "7.4",
               "imdbVotes": "515,323",
