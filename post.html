@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="./sass/style.css">
+     <title>Post </title>
+</head>
+<body>
+     <main class="post_main"> 
+          <div class="container">
+               <div class="row post_content">
+                    <div class="post_header">
+                         <ul class="post_header_list_left">
+                              <li class="post_header_items">Movie</li>
+                              <li class="post_header_items">Tv Show</li>
+                              <li class="post_header_items">Documentaries</li>
+                         </ul>
+                         <div class="logo">
+                              <img src="img/post_img/logo.png" alt="">
+                         </div>
+                         <ul class="post_header_list_right">
+                              <li class="post_header_items"><img src="img/post_img/search.png" alt=""></li>
+                              <li class="post_header_items"><img src="img/post_img/ring.png" alt=""></li>
+                              <li class="post_header_items"><a href="#">Sing In</a></li>
+                         </ul>
+                    </div>
+                    <div class="post_body">
+                         <div class="post_body_content">
+                              <h1 class="post_title">
+                                   GODZILLA
+                                   <span>
+                                        KING OF THE MONSTERS
+                                   </span>
+                              </h1>
+                              <p class="post_desc">
+                                   It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.
+                              </p>
+                              <ul class="post_stars">
+                                   <li class="active">&#9733;</li>
+                                   <li class="active">&#9733;</li>
+                                   <li class="active">&#9733;</li>
+                                   <li class="active">&#9733;</li>
+                                   <li class="deactive">&#9734;</li>
+                              </ul>
+                              <div class="btns">
+                                   <a href="#" class="post_watch">
+                                        <img src="img/post_img/play.png" alt=""> Watch Now</a>
+                                   <a href="#" class="post_trailer">Trailer</a>
+                              </div>
+                         </div>
+                         
+                    </div>
+                    <div class="post_slider">
+                         <ul class="post_slider_list">
+                         </ul>
+                         <a class="slider-btn previous" onclick="setSlides(-1)">❮</a>
+                         <a class="slider-btn next" onclick="setSlides(1)">❯</a>
+                    </div>
+               </div>
+          </div>
+     </main>
+          
+          
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+     let  post_main = document.querySelector('.post_main'),
+          post_title  = document.querySelector('.post_title'),
+          post_desc = document.querySelector('.post_desc');
+
+     let url = 'http://localhost:3001/';
+     let splited = window.location.href.split('=');
+     splited = +splited.at(-1)
+
+     function update() {
+          axios.get(url + 'movies?id=' + splited)
+               .then(res => {
+                    posted(res.data)
+                    console.log(res.data);
+               })
+          .catch(err => console.log(err))
+     }
+     update()
+     function posted(obj) {
+          for (let item of obj) {
+               post_main.style.background = `url(${item.Poster}) center center/cover no-repeat;`
+               post_title.innerHTML = item.Title;
+               post_desc.innerHTML = item.Plot
+          }
+     } 
+
+     /////////////////////////////
+     let ul = document.querySelector('.post_slider_list')
+     axios.get(url + 'movies')
+          .then(res => {
+                    reSlide(res.data)
+                    console.log(res.data);
+               })
+          .catch(err => console.log(err))
+     
+          function reSlide(arr) {
+          ul.innerHTML = "";
+          for (const item of arr) {
+          let  li = document.createElement('li'),
+               img = document.createElement('img');
+          
+               li.classList.add('post_slider_item');
+               img.setAttribute('src', `${item.imgSlide}`)
+               li.append(img)
+
+               li.onclick = (e) => {
+                    console.log(item);
+                    posted(item)
+               }
+               ul.append(li)
+               }
+          }
+</script>
+</body>
+</html>
